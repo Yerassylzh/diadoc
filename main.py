@@ -101,7 +101,7 @@ async def get_weekly_ai_feedback(user_id: int) -> str:
     message = (
         "Представь что я болею сахарным диабетом. И на протяжении недели меня консультировал ты. \n\n"
         "Вот его советы и обратная связь по этой неделе \n"
-        f"{"\n\n\n".join([d["content"] for d in data])}\n\n\n"
+        f"{'\n\n\n'.join([d['content'] for d in data])}\n\n\n"
         "Дай подробный отчет, помоги оценить прогресс и дай полезные советы. "
         "Дай полезные рекомендации по питанию, активности и ментальному здоровью. "
         "Ответ должен быть максимум 20 предложения, понятным и информативным."
@@ -153,7 +153,7 @@ async def start_handler(message: Message, state: FSMContext):
     ]
     if user_exists:
         await message.answer(
-            f"Вы уже зарегистрированы в нашей системе.\nНиже можете увидеть доступные команды: \n{''.join([("/" + cmd + "\n") for cmd in available_commands])}"
+            f"Вы уже зарегистрированы в нашей системе.\nНиже можете увидеть доступные команды: \n{''.join([('/' + cmd + '\n') for cmd in available_commands])}"
         )
         return
 
@@ -174,7 +174,7 @@ async def start_handler(message: Message, state: FSMContext):
         "📊 **Раз в неделю** я подготовлю для вас подробный отчет, помогу оценить прогресс и дам полезные советы!\n\n"
         "💬 В любое время вы можете задать мне вопросы – я всегда на связи!\n\n"
         "Моя цель – сделать заботу о вашем здоровье удобной и поддерживающей. Давайте двигаться к лучшему самочувствию вместе! 🚀"
-        f"Ниже можете увидеть доступные команды: \n{''.join([("/" + cmd + "\n") for cmd in available_commands])}"
+        f"Ниже можете увидеть доступные команды: \n{''.join([('/' + cmd + '\n') for cmd in available_commands])}"
     )
     await message.answer(welcome_text, parse_mode="Markdown")
     await state.clear()
