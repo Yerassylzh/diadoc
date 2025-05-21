@@ -8,7 +8,7 @@ class PhysicalHealth(Base):
     __tablename__ = "physical_health"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    userId = Column(Integer, unique=True)
+    userId = Column(Integer)
     calories = Column(Integer)
     createdAt = Column(DateTime, default=datetime.now)
 
@@ -20,7 +20,7 @@ class MentalHealth(Base):
     __tablename__ = "mental_health"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    userId = Column(Integer, unique=True)
+    userId = Column(Integer)
     rating = Column(Integer)
     note = Column(Text)
     createdAt = Column(DateTime, default=datetime.now)
@@ -33,8 +33,8 @@ class Glucose(Base):
     __tablename__ = "glucose"
     
     id = Column(Integer, primary_key=True, autoincrement=True)
-    userId = Column(Integer, unique=True)
-    value = Column(Integer)
+    userId = Column(Integer)
+    value = Column(String)
     createdAt = Column(DateTime, default=datetime.now)
 
     def __repr__(self):
@@ -45,7 +45,7 @@ class Diet(Base):
     __tablename__ = "diet"
     
     id = Column(Integer, primary_key=True, autoincrement=True)
-    userId = Column(Integer, unique=True)
+    userId = Column(Integer)
     calories = Column(Integer)
     createdAt = Column(DateTime, default=datetime.now)
     
