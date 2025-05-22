@@ -7,7 +7,7 @@ from aiogram.filters import Command, StateFilter
 
 from db.db import db_session
 from db.models import PhysicalHealth
-from utils import send_message
+from utils.base import send_message
 
 router = Router()
 
@@ -41,7 +41,7 @@ async def handle_sport_enter(message: types.Message, state: FSMContext):
             send_message(message, "✅ Спасибо, что ввели данные!\n📊 Не забывайте — вы всегда можете попросить у меня график с вашими данными для удобного отслеживания."),
             state.clear()
         )
-    except ...:
+    except BaseException as ex:
         print(ex)
         asyncio.gather(
             send_message(message, "Произошла ошибка при сохранении данных. Пожалуйста, попробуйте заново."),

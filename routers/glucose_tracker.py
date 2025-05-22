@@ -7,7 +7,7 @@ from aiogram.filters import Command, StateFilter
 
 from db.db import db_session
 from db.models import Glucose
-from utils import send_message
+from utils.base import send_message
 
 router = Router()
 
@@ -51,6 +51,6 @@ async def handle_glucose_enter(message: types.Message, state: FSMContext):
 def validate_glucose(value):
     try:
         value = float(value)
-        return value >= 0
+        return 0 <= value <= 15
     except BaseException as ex:
         return False
